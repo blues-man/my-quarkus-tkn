@@ -3,8 +3,13 @@ kind: PipelineRun
 metadata:
   name: promote-to-prod
   annotations:
-    pipelinesascode.tekton.dev/on-cel-expression: |
-      event == "push" && body.object_kind == "release"
+    # The event we are targeting as seen from the webhook payload
+    # this can be an array too, i.e: [pull_request, push]
+    pipelinesascode.tekton.dev/on-event: "[release]"
+
+    # The branch or tag we are targeting (ie: main, refs/tags/*)
+    pipelinesascode.tekton.dev/on-target-branch: "[main]"
+
     pipelinesascode.tekton.dev/pipeline: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/pipelines/promote-to-env.yaml"
     pipelinesascode.tekton.dev/task-1: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/tasks/gather-images-to-verify.yaml"
     pipelinesascode.tekton.dev/task-2: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/tasks/verify-enterprise-contract.yaml"

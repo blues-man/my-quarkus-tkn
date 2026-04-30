@@ -3,8 +3,13 @@ kind: PipelineRun
 metadata:
   name: maven-image-build
   annotations:
-    pipelinesascode.tekton.dev/on-cel-expression: |
-      body.object_kind == "push" && body.ref == "refs/heads/master"
+    # The event we are targeting as seen from the webhook payload
+    # this can be an array too, i.e: [pull_request, push]
+    pipelinesascode.tekton.dev/on-event: "[push]"
+
+    # The branch or tag we are targeting (ie: main, refs/tags/*)
+    pipelinesascode.tekton.dev/on-target-branch: "[master]"
+
     pipelinesascode.tekton.dev/pipeline: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/pipelines/maven-build-ci.yaml"
     pipelinesascode.tekton.dev/task-0: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/tasks/init.yaml"
     pipelinesascode.tekton.dev/task-1: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/tasks/git-clone.yaml"
