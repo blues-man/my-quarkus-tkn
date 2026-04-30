@@ -5,11 +5,11 @@ metadata:
   annotations:
     pipelinesascode.tekton.dev/on-cel-expression: |
       event == "push" && body.object_kind == "release"
-    pipelinesascode.tekton.dev/pipeline: "https://gitlab-gitlab.apps.cluster-892bb.dynamic.redhatworkshops.io/rhdh/tssc-sample-pipelines/-/raw/main/pipelines/promote-to-env.yaml"
-    pipelinesascode.tekton.dev/task-1: "https://gitlab-gitlab.apps.cluster-892bb.dynamic.redhatworkshops.io/rhdh/tssc-sample-pipelines/-/raw/main/tasks/gather-images-to-verify.yaml"
-    pipelinesascode.tekton.dev/task-2: "https://gitlab-gitlab.apps.cluster-892bb.dynamic.redhatworkshops.io/rhdh/tssc-sample-pipelines/-/raw/main/tasks/verify-enterprise-contract.yaml"
-    pipelinesascode.tekton.dev/task-3: "https://gitlab-gitlab.apps.cluster-892bb.dynamic.redhatworkshops.io/rhdh/tssc-sample-pipelines/-/raw/main/tasks/skopeo-copy.yaml"
-    pipelinesascode.tekton.dev/task-4: "https://gitlab-gitlab.apps.cluster-892bb.dynamic.redhatworkshops.io/rhdh/tssc-sample-pipelines/-/raw/main/tasks/update-deployment.yaml"
+    pipelinesascode.tekton.dev/pipeline: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/pipelines/promote-to-env.yaml"
+    pipelinesascode.tekton.dev/task-1: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/tasks/gather-images-to-verify.yaml"
+    pipelinesascode.tekton.dev/task-2: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/tasks/verify-enterprise-contract.yaml"
+    pipelinesascode.tekton.dev/task-3: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/tasks/skopeo-copy.yaml"
+    pipelinesascode.tekton.dev/task-4: "https://raw.githubusercontent.com/blues-man/my-quarkus-tkn/refs/heads/master/tkn/tasks/update-deployment.yaml"
   labels:
     backstage.io/kubernetes-id: "my-quarkus-tkn"
 spec:
