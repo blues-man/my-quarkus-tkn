@@ -1,6 +1,6 @@
 # my-quarkus-tkn
 
-A cool quarkus app
+A cool secure quarkus app
 
 ## Running the application in dev mode
 
